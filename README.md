@@ -42,6 +42,17 @@ https://dl.espressif.com/dl/package_esp32_index.json.
 
 ### [Обзор модуля реле для ESP8266-01S](https://robotchip.ru/obzor-modulya-rele-dlya-esp8266-01s-esp-01s/)
 
+### [Wi-Fi модуль ESP-01 Ардуино, как подключить](https://arduino-site.ru/esp-8266/)
+
+### [Передача Email с использованием Arduino и Wi-Fi модуля ESP8266](https://microkontroller.ru/arduino-projects/peredacha-email-s-ispolzovaniem-arduino-i-wifi-modulya/)
+
+### [Arduino to ESP8266 By Serial Communication](https://www.martyncurrey.com/arduino-to-esp8266-serial-commincation/)
+
+### [How to Use ESP-01 ESP-01S Pins and Leds](https://www.instructables.com/How-to-use-the-ESP8266-01-pins/)
+
+### [Getting Started with Thonny MicroPython (Python) IDE for ESP32 and ESP8266](https://randomnerdtutorials.com/getting-started-thonny-micropython-python-ide-esp32-esp8266/)
+
+
 
  
 ###### [к содержанию](#soderzhanie)

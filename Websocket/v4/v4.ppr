@@ -1,0 +1,39 @@
+[Config]
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.CompileOnBackground=0
+Compilator.ProgSaveAll=0
+Compilator.ProgRunSelection=0
+Compilator.LogType=0
+Compilator.LogEncoding=0
+DefaultDir=C:\ittve-ESP8266\Websocket\v4
+DefaultCP=0
+LogtoEnd=1
+DontOpen=0
+AbsolutePath=0
+FileFormat=0
+ProjectFilesOnly=0
+Extensions=*.*
+[Project tree]
+v4
+	+v4
+		index.html
+		SimpleServer.php
+		socket.js
+		v4.ppr
+[Open project files]
+0=index.html
+1=socket.js
+2=style.css
+[Selected Project Files]
+Main=
+Selected=socket.js
+[index.html]
+TopLine=1
+Caret=43,6
+[socket.js]
+TopLine=34
+Caret=1,72
+[style.css]
+TopLine=1
+Caret=1,30

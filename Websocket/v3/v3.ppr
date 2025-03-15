@@ -1,0 +1,39 @@
+[Config]
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.CompileOnBackground=0
+Compilator.ProgSaveAll=0
+Compilator.ProgRunSelection=0
+Compilator.LogType=0
+Compilator.LogEncoding=0
+DefaultDir=C:\ittve-ESP8266\Websocket\v3
+DefaultCP=0
+LogtoEnd=1
+DontOpen=0
+AbsolutePath=0
+FileFormat=0
+ProjectFilesOnly=0
+HTServer=localhost
+Extensions=*.*
+[Project tree]
+v3
+	-v3
+		client.html
+		index.php
+		LICENSE
+		proc.php
+		README.md
+		zn_websocket.php
+		zn_websocket-master.zip
+[Open project files]
+0=client.html
+1=zn_websocket.php
+[Selected Project Files]
+Main=
+Selected=zn_websocket.php
+[client.html]
+TopLine=137
+Caret=1,1
+[zn_websocket.php]
+TopLine=77
+Caret=3,77

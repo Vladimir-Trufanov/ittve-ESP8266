@@ -13,6 +13,7 @@ DontOpen=0
 AbsolutePath=0
 FileFormat=0
 ProjectFilesOnly=0
+HTServer=localhost
 Extensions=*.*
 [Project tree]
 v4
@@ -25,9 +26,13 @@ v4
 0=index.html
 1=socket.js
 2=style.css
+3=WebSocketServer_class.php
+4=echo-server.php
+5=SimpleServer.php
+6=web-socket-server\cmd-server.php
 [Selected Project Files]
 Main=
-Selected=socket.js
+Selected=WebSocketServer_class.php
 [index.html]
 TopLine=1
 Caret=43,6
@@ -37,3 +42,15 @@ Caret=1,72
 [style.css]
 TopLine=1
 Caret=1,30
+[WebSocketServer_class.php]
+TopLine=31
+Caret=2,435
+[echo-server.php]
+TopLine=1
+Caret=1,4
+[SimpleServer.php]
+TopLine=1
+Caret=89,4
+[web-socket-server\cmd-server.php]
+TopLine=1
+Caret=81,3

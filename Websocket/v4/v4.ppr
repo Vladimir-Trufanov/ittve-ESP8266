@@ -18,39 +18,60 @@ Extensions=*.*
 [Project tree]
 v4
 	+v4
+		+localhost90
+			-jQuery
+				-images
+					localhost90\jQuery\images\ui-icons_444444_256x240.png
+					localhost90\jQuery\images\ui-icons_555555_256x240.png
+					localhost90\jQuery\images\ui-icons_777620_256x240.png
+					localhost90\jQuery\images\ui-icons_777777_256x240.png
+					localhost90\jQuery\images\ui-icons_cc0000_256x240.png
+					localhost90\jQuery\images\ui-icons_ffffff_256x240.png
+				localhost90\jQuery\jquery-1.11.1.min.js
+				localhost90\jQuery\jquery-1.11.1.min.map
+				localhost90\jQuery\jquery-ui.min.css
+				localhost90\jQuery\jquery-ui.min.js
+			localhost90\echo-server.php
+			localhost90\favicon.ico
+			localhost90\index.html
+			localhost90\socket.js
+			localhost90\style.css
+			localhost90\WebSocketServer_class.php
+		-web-socket-server
+			web-socket-server\cmd-server.php
+			web-socket-server\echo-server.php
+			web-socket-server\simple.php
+			web-socket-server\socket.html
+			web-socket-server\socket.js
+			web-socket-server\style.css
+			web-socket-server\WebSocketServer.class.php
+			web-socket-server\WebSocketServer-2.class.php
+		echo-server.php
 		index.html
 		SimpleServer.php
+		socket.html
 		socket.js
+		style.css
 		v4.ppr
+		WebSocketServer_class.php
+		web-socket-server-master.zip
 [Open project files]
-0=index.html
-1=socket.js
-2=style.css
-3=WebSocketServer_class.php
-4=echo-server.php
-5=SimpleServer.php
-6=web-socket-server\cmd-server.php
+0=localhost90\socket.js
+1=localhost90\echo-server.php
+2=localhost90\index.html
+3=localhost90\WebSocketServer_class.php
 [Selected Project Files]
 Main=
-Selected=WebSocketServer_class.php
-[index.html]
-TopLine=1
-Caret=43,6
-[socket.js]
+Selected=localhost90\echo-server.php
+[localhost90\socket.js]
 TopLine=34
-Caret=1,72
-[style.css]
+Caret=9,46
+[localhost90\echo-server.php]
 TopLine=1
-Caret=1,30
-[WebSocketServer_class.php]
-TopLine=31
-Caret=2,435
-[echo-server.php]
+Caret=55,28
+[localhost90\index.html]
 TopLine=1
-Caret=1,4
-[SimpleServer.php]
-TopLine=1
-Caret=89,4
-[web-socket-server\cmd-server.php]
-TopLine=1
-Caret=81,3
+Caret=1,11
+[localhost90\WebSocketServer_class.php]
+TopLine=183
+Caret=5,84

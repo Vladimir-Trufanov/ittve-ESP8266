@@ -4,9 +4,13 @@
     <meta charset="UTF-8" />
     <title>Простой WebSocket клиент</title>
     <link rel="stylesheet" href="style.css" type="text/css" />
-    <script src="socket.js" type="text/javascript"></script>
+    <script src="/jQuery/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/jQuery/jquery-ui.min.css">
+    <script src="/jQuery/jquery-ui.min.js"></script>
+    <script src="socket.js"></script>
 </head>
 <body>
+    <p><button onclick="isSocket()">Загрузить Websocket Server</button></p>
     <div>
         <span>Сервер</span>
         <input id="server" type="text" value="ws://127.0.0.1:7777" />

@@ -1,0 +1,38 @@
+[Config]
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.CompileOnBackground=0
+Compilator.ProgSaveAll=0
+Compilator.ProgRunSelection=0
+Compilator.LogType=0
+Compilator.LogEncoding=0
+DefaultDir=C:\ittve-ESP8266\Websocket\v1
+DefaultCP=0
+LogtoEnd=1
+DontOpen=0
+AbsolutePath=0
+FileFormat=0
+ProjectFilesOnly=0
+HTServer=localhost
+Extensions=*.*
+[Project tree]
+v1
+	+v1
+		-sample
+			sample\index.html
+			sample\srv.php
+		-src
+			src\WebSocketServer.php
+		LICENSE
+		ServerSocket.php
+		WebSocketServer.php
+		websocket-server-php-master.zip
+		WebSocket-сервер-на-PHP.md
+[Open project files]
+0=..\v5\RusakovServer.php
+[Selected Project Files]
+Main=
+Selected=..\v5\RusakovServer.php
+[..\v5\RusakovServer.php]
+TopLine=30
+Caret=3,69

@@ -1,6 +1,8 @@
 ## Websocket
 
-### "пример вэбсокета на php"
+### "[пример вэбсокета на php](#)"
+
+### "[пример сокет клиента и сервера на php](#)"
 
 ### Общие рекомендации по запуску PHP-скриптов в командной строке Windows:
 
@@ -14,7 +16,35 @@
 
 - Также рекомендуется добавить путь до PHP в переменную окружения PATH в Windows. Это позволит не указывать каждый раз полный путь до файла php.exe. 
 
-### [v4 WebSocket сервер на PHP:  10.10.2018](https://tokmakov.msk.ru/blog/item/202)
+---
+
+### [v1 WebSocket сервер на PHP](v1/WebSocket-сервер-на-PHP.md) 
+
+### [v2 Примeры из PHP](#v2-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B-%D0%B8%D0%B7-php) 
+
+### [v4 WebSocket сервер на PHP:  10.10.2018](#v4-websocket-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80-%D0%BD%D0%B0-php)
+
+### [v5 Сокеты: Сервер на PHP](https://myrusakov.ru/php-socket-server.html)
+
+### [v6 Socket Programming in PHP](https://www.codeproject.com/Tips/418814/Socket-Programming-in-PHP)
+
+### [v7 PHP Socket client server example - не заработало](https://gist.github.com/williamdes/ef6c3601bec753d9b7c94d3eb2f48d6a)
+
+
+#### Опция 'SOCK_RAW' в системном вызове 'socket'
+
+ Это необработанный режим (по типу сокета SOCK_RAW) по сути, позволяет обойти некоторые этапы обработки TCP/IP на вашем компьютере. Вместо того, чтобы проходить через обычные уровни инкапсуляции/декапсуляции, которые выполняет стек TCP/IP в ядре, вы просто передаёте пакет нужному приложению. Без обработки TCP/IP — то есть это не обработанный пакет, а необработанный. Приложение, использующее пакет, теперь отвечает за удаление заголовков, анализ пакета и все то, что обычно делает за вас стек TCP/IP в ядре.
+ 
+### [v8 PHP and Sockets: Network Programming with PHP](https://reintech.io/blog/php-and-sockets-network-programming)
+ 
+
+---
+
+### [v2 Примеры из PHP](https://www.php.net/manual/ru/sockets.examples.php) 
+
+---
+
+### [v4 WebSocket сервер на PHP](https://tokmakov.msk.ru/blog/item/202)
 
 Протокол WebSocket предназначен для решения разных задач и снятия ограничений обмена данными между браузером и сервером. Он позволяет пересылать любые данные, на любой домен, безопасно и почти без лишнего сетевого трафика. Для установления соединения WebSocket клиент и сервер используют протокол, похожий на HTTP. Клиент формирует особый HTTP-запрос, на который сервер отвечает определенным образом.
 
@@ -38,9 +68,6 @@ Set option...
 Listening socket...
 Waiting for connections...
 ```
-
-
-
 #### [web-socket-server](https://github.com/tokmakov/web-socket-server)
 
 #### [WebSocket](https://learn.javascript.ru/websockets)
@@ -105,9 +132,5 @@ a) клиент сокета в браузере работал не по про
 
 
 ### Библиография
-
-#### [v1 WebSocket сервер на PHP](https://github.com/maestroprog/websocket-server-php) 
-
-#### [v2 Примеры из PHP](https://www.php.net/manual/ru/sockets.examples.php) 
 
 #### [v3 Веб-сокеты в каждый дом](https://hharek.ru/веб-сокеты-в-каждый-дом)

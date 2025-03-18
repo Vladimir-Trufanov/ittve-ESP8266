@@ -1,36 +1,37 @@
-# WebSocket сервер на PHP
+## [WebSocket сервер на PHP](https://github.com/maestroprog/websocket-server-php)
 
 Класс [WebSocketServer](src/WebSocketServer.php) представляет из себя реализацию простого WebSocket сервера на PHP.
 
-## Пример использования
+#### Поднимаем WebSocket сервер на порту 8898
 
-### Поднимаем WebSocket сервер на порту 8898
+Выбираем из каталога ***src*** файл с кодом сервера ***WebSocketServer.php*** и формируем сценарий запуска сервера ***ServerSocket.php***.
 
-```php
-
-require_once 'src/WebSocketServer.php';
+```
+<?php
+require_once 'WebSocketServer.php';
 
 $server = new WebSocketServer(8898);
 
 // слушаем входящие соединения
-while (false !== ($activity = $server->listen())) {
-    // каждую секунду читаем поступающие данные от клиентов
-    foreach (array_keys($server->wsClients) as $address) {
-        if ($data = $server->readFrom($address)) {
-            // эмулируем работу эхо-сервера, отправляем полученные данные клиенту
-            $server->sendTo($address, var_export($data, true));
-        }
+while (false !== ($activity = $server->listen()))
+{
+  // каждую секунду читаем поступающие данные от клиентов
+  foreach (array_keys($server->wsClients) as $address) 
+  {
+    if ($data = $server->readFrom($address))
+    {
+      // эмулируем работу эхо-сервера, отправляем полученные данные клиенту
+      $server->sendTo($address, var_export($data, true));
     }
-    sleep(1);
+  }
+  sleep(1);
 }
-
 ```
 
-Затем запускаем получившийся скрипт из консоли:
+Затем запускаем получившийся скрипт из консоли (из командной строки):
 
 ```
-//  $ php -f server.php
-php -f srv.php
+php -f ServerSocket.php
 ```
 
 

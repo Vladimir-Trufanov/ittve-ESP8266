@@ -1,0 +1,55 @@
+[Config]
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.CompileOnBackground=0
+Compilator.ProgSaveAll=0
+Compilator.ProgRunSelection=0
+Compilator.LogType=0
+Compilator.LogEncoding=0
+DefaultDir=C:\ittve-ESP8266\Websocket\v4 WebSocket сервер на PHP\Echo-server
+DefaultCP=0
+LogtoEnd=1
+DontOpen=0
+AbsolutePath=0
+FileFormat=0
+ProjectFilesOnly=0
+HTServer=localhost
+Extensions=*.*
+[Project tree]
+Echo-server
+	+Echo-server
+		echo-server.php
+		Echo-server.ppr
+		favicon.ico
+		index.html
+		socket.js
+		style.css
+		WebSocketServerClass.php
+[Open project files]
+0=socket.js
+1=WebSocketServerClass.php
+2=index.html
+3=echo-server.php
+4=..\Com-server\com-server.php
+5=..\Com-server\index.html
+[Selected Project Files]
+Main=
+Selected=..\Com-server\com-server.php
+[socket.js]
+TopLine=1
+Caret=1,1
+[WebSocketServerClass.php]
+TopLine=396
+Caret=2,435
+[index.html]
+TopLine=1
+Caret=66,12
+[echo-server.php]
+TopLine=1
+Caret=1,4
+[..\Com-server\com-server.php]
+TopLine=1
+Caret=4,3
+[..\Com-server\index.html]
+TopLine=1
+Caret=1,13

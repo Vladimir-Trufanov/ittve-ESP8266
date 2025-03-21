@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>WebSocket клиент</title>
+		<style>
+body
+{
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	font-family: "Trebuchet MS";
+}
+
+div, label, input, textarea
+{
+	box-sizing: border-box;
+}
+
+h1
+{
+	text-align: center;
+}
+
+.main
+{
+	width: 40em;
+	margin: 0 auto;
+	padding: 2em;
+}
+
+label
+{
+	display: block;
+}
+
+input
+{
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 2px 4px;
+	height: 2em;
+	font-family: monospace;
+}
+
+input[name=ip]
+{
+	width: 10em;
+	text-align: right;
+}
+
+input[name=port]
+{
+	width: 4em;
+	text-align: right;
+}
+
+.connect, .close
+{
+	width: 10em;
+	border: 1px solid #ccc;
+	height: 2em;
+	cursor: pointer;
+}
+
+textarea
+{
+	font-family: monospace;
+	display: block;
+	padding: 2px 4px;
+	width: 100%;
+	margin: 1em 0 0 0;
+	border: 1px solid #ccc;
+	height: 4em;
+}
+
+.send
+{
+	width: 16em;
+	border: 1px solid #ccc;
+	height: 2em;
+	cursor: pointer;
+	margin: 0.5em auto 0 auto;
+	display: block;
+}
+
+label
+{
+	text-align: center;
+	margin: 2em 0 0 0;
+	font-weight: bold;
+}
+
+.log
+{
+	margin: 1em 0 0 0;
+	padding: 2px 4px;
+	min-height: 20em;
+	width: 100%;
+	border: 1px dashed #ccc;
+	overflow: auto;
+}
+
+.log pre
+{
+	font-family: monospace;
+	font-size: 14px;
+	padding: 0;
+	margin: 0;
+}
+		</style>
+		<script>
+var ws;		/* Объект веб-сокет */
+
+/* При загрузке страницы */
+window.onload = function()
+{
+	/* Кнопка «Соединиться» */
+	document.getElementById("connect").onclick = function()
+	{
+		var ip = document.getElementById("ip").value;
+		var port = document.getElementById("port").value;
+		
+		connect(ip, port);
+		
+		return false;
+	};
+	
+	/* Кнопка «Отсоединится» */
+	document.getElementById("close").onclick = function()
+	{
+		ws.close();
+		
+		return false;
+	};
+	
+	/* Кнопка «Отправить сообщение» */
+	document.getElementById("send").onclick = function()
+	{
+		var message = document.getElementById("message").value;
+		
+		send(message);
+		
+		return false;
+	};
+};
+
+/**
+ * Функция логирования
+ */
+function log(str)
+{
+	document.getElementById("log").innerText += str + "\n";	
+}
+
+/**
+ * Соединение
+ */
+function connect(ip, port)
+{
+	ws = new WebSocket("ws://" + ip + ":" + port);
+	
+	ws.onopen = function()
+	{
+		log("Соединение установлено.");
+	};
+
+	ws.onclose = function(event)
+	{
+		log("Соединение закрыто. Код «" + event.code + "».");
+	};
+
+	ws.onmessage = function(event)
+	{
+		log("Пришло сообщение «" + event.data + "».");
+	};
+
+	ws.onerror = function(error) 
+	{
+		log("Произошла ошибка: «" + error.message + "».");
+	};
+}
+
+/**
+ * Отправить сообщение
+ */
+function send(str)
+{
+	ws.send(str);
+	log("Отправлено сообщение «" + str + "».");
+}
+		</script>
+	</head>
+	<body>
+		<h1>WebSocket клиент</h1>
+		<div class="main">
+			<form>
+				<input id="ip" type="text" name="ip" value="127.0.0.1" placeholder="IP-адрес"/>
+				<input id="port" type="text" name="port" value="3333" placeholder="Порт"/>
+				<button id="connect" class="connect">Соединиться</button>
+				<button id="close" class="close">Отсоединиться</button>
+				
+				<textarea id="message" placeholder="Сообщение"></textarea>
+				<button id="send" class="send">Отправить сообщение</button>
+				
+				<label>Лог</label>
+				<div class="log"><pre id="log"></pre></div>
+			</form>
+		</div>
+	</body>
+</html>

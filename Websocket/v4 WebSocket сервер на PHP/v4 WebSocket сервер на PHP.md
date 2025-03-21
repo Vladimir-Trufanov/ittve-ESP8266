@@ -1,8 +1,4 @@
-## Websocket
-
-### "[пример вэбсокета на php](#)"
-
-### "[пример сокет клиента и сервера на php](#)"
+## [v4 WebSocket сервер на PHP](https://tokmakov.msk.ru/blog/item/202)
 
 ### Общие рекомендации по запуску PHP-скриптов в командной строке Windows:
 
@@ -16,38 +12,119 @@
 
 - Также рекомендуется добавить путь до PHP в переменную окружения PATH в Windows. Это позволит не указывать каждый раз полный путь до файла php.exe. 
 
+### Как пользоваться TelNet в Windows 11:
+
+Чтобы пользоваться Telnet в Windows 11, необходимо включить эту функцию через настройки операционной системы:
+
+- Откройте «Панель управления». Для этого нажмите клавиши Win + R на клавиатуре (либо правой кнопкой мыши по кнопке «Пуск» и выберите пункт «Выполнить»).
+
+- Введите ***appwiz.cpl*** и нажмите ***Enter***. В открывшемся окне в панели слева нажмите по пункту «***Включение или отключение компонентов Windows***». 
+
+- Отметьте «***Клиент Telnet***» в списке доступных компонентов и нажмите «***Ок***».  Дождитесь, когда клиент Telnet будет установлен. 
+
+- Для начала использования достаточно будет запустить командную строку, ввести команду ***telnet*** и нажать ***Enter***. 
+
+Важно учитывать риски безопасности при использовании Telnet, так как он отправляет данные в открытом виде. Это может привести к подслушиванию конфиденциальной информации, например, имён пользователей и паролей.
+
+### [v4 WebSocket сервер на PHP](https://tokmakov.msk.ru/blog/item/202)
+
+Протокол WebSocket предназначен для решения разных задач и снятия ограничений обмена данными между браузером и сервером. Он позволяет пересылать любые данные, на любой домен, безопасно и почти без лишнего сетевого трафика. Для установления соединения WebSocket клиент и сервер используют протокол, похожий на HTTP. Клиент формирует особый HTTP-запрос, на который сервер отвечает определенным образом.
+
+#### 1. Simple.php Простой сокет-сервер
+
+В первую очередь надо в файле php.ini расскомментировать строку, позволяющую работать с сокетами и перезапустить сервер:
+
+```
+extension = php_sockets.dll
+```
+
+Простой сокет-сервер представлен файлом ***Simple.php***. Запуск из командной строки и ответы сервера выглядят след.образом: 
+
+```
+php.exe -f Simple.php
+
+SERVER START
+Socket create...
+Socket bind...
+Set option...
+Listening socket...
+Waiting for connections...
+```
+
+Попробуем пообщаться с сервером с помощью telnet:
+
+```
+> telnet
+```
+Получив приглашение telnet, даем команду:
+
+```
+> open 127.0.0.1 7777
+
+Hello, Client!
+```
+
+#### 2. Echo-server  - второй сокет-сервер
+
+Вначале делаем сайт для клиента на ***localhost:89*** из ***index.html, socket.js, style.css***. Пытаемся соединиться с ***ws://echo.websocket.org***. Не получилось, ошибка 1006.
+
+Но, когда заменил на ***wss://echo.websocket.org*** получился вот такой диалог:
+
+```
+Соединение с сервером установлено
+Получено сообщение от сервера: Request served by 1781505b56ee58
+Отправлено сообщение серверу: Привет!
+Получено сообщение от сервера: Привет!
+```
+#### 3. [echo-websocket-org](https://websocket.org/tools/websocket-echo-server)
+
+В данном каталоге загружен подправленный клиент со страницы ***https://echo.websocket.org/.ws*** и снятый со [страницы](https://echo.websocket.org/) тестовый сервер ***echo-websocket-org***.
+
+```
+Request served by 1781505b56ee58
+
+GET / HTTP/1.1
+
+Host: echo.websocket.org
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,ko;q=0.8
+Cookie: _ga=GA1.1.703122278.1742325685; _ga_BZ0LYEZXEJ=GS1.1.1742539519.2.1.1742542051.0.0.0
+Fly-Client-Ip: 94.140.245.110
+Fly-Forwarded-Port: 443
+Fly-Forwarded-Proto: https
+Fly-Forwarded-Ssl: on
+Fly-Region: fra
+Fly-Request-Id: 01JPVSNE3231E4KGBB0T3ET5PC-fra
+Priority: u=0, i
+Sec-Ch-Ua: "Not A(Brand";v="8", "Chromium";v="132", "YaBrowser";v="25.2", "Yowser";v="2.5"
+Sec-Ch-Ua-Mobile: ?0
+Sec-Ch-Ua-Platform: "Windows"
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 YaBrowser/25.2.0.0 Safari/537.36
+Via: 2 fly.io, 2 fly.io
+X-Forwarded-For: 94.140.245.110, 66.241.124.119
+X-Forwarded-Port: 443
+X-Forwarded-Proto: https
+X-Forwarded-Ssl: on
+X-Request-Start: t=1742542125154757
+```
+#### 4. Делаем сервер: ***echo-server.php***
+
+Поработали с ***echo.websocket.org***, делаем свой сервер. 
+Запускаем сервер из командной строки:
+
+```
+php.exe -f echo-server.php
+```
+#### 5. "Клиент отправляет команды, а сервер их выполняет"
+
+Делаем сервер на порту ***7773*** с тем-же клиентом: ***com-server.php***.
+
 ---
-
-### [v1 WebSocket сервер на PHP](v1/WebSocket-сервер-на-PHP.md) 
-
-### [v2 Примeры из PHP](#v2-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B-%D0%B8%D0%B7-php) 
-
-### [v4 WebSocket сервер на PHP:  10.10.2018](v4 WebSocket сервер на PHP/v4 WebSocket сервер на PHP.md)
-
-### [v5 Сокеты: Сервер на PHP](https://myrusakov.ru/php-socket-server.html)
-
-### [v6 Socket Programming in PHP](https://www.codeproject.com/Tips/418814/Socket-Programming-in-PHP)
-
-### [v7 PHP Socket client server example - не заработало](https://gist.github.com/williamdes/ef6c3601bec753d9b7c94d3eb2f48d6a)
-
-
-#### Опция 'SOCK_RAW' в системном вызове 'socket'
-
- Это необработанный режим (по типу сокета SOCK_RAW) по сути, позволяет обойти некоторые этапы обработки TCP/IP на вашем компьютере. Вместо того, чтобы проходить через обычные уровни инкапсуляции/декапсуляции, которые выполняет стек TCP/IP в ядре, вы просто передаёте пакет нужному приложению. Без обработки TCP/IP — то есть это не обработанный пакет, а необработанный. Приложение, использующее пакет, теперь отвечает за удаление заголовков, анализ пакета и все то, что обычно делает за вас стек TCP/IP в ядре.
- 
-### [v8 PHP and Sockets: Network Programming with PHP](https://reintech.io/blog/php-and-sockets-network-programming)
- 
----
-
-### [v2 Примеры из PHP](https://www.php.net/manual/ru/sockets.examples.php) 
-
----
-
-#### [web-socket-server](https://github.com/tokmakov/web-socket-server)
-
-#### [WebSocket](https://learn.javascript.ru/websockets)
-
-#### [The WebSocket Protocol](https://datatracker.ietf.org/doc/html/rfc6455#section-7.4)
 
 ***Defined Status Codes***
 
@@ -101,4 +178,8 @@ a) клиент сокета в браузере работал не по про
 
 ### Библиография
 
-#### [v3 Веб-сокеты в каждый дом](https://hharek.ru/веб-сокеты-в-каждый-дом)
+#### [web-socket-server](https://github.com/tokmakov/web-socket-server)
+
+#### [WebSocket](https://learn.javascript.ru/websockets)
+
+#### [The WebSocket Protocol](https://datatracker.ietf.org/doc/html/rfc6455#section-7.4)

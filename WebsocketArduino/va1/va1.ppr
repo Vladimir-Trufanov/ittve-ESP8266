@@ -13,6 +13,7 @@ DontOpen=0
 AbsolutePath=0
 FileFormat=0
 ProjectFilesOnly=0
+HTServer=localhost
 Extensions=*.*
 [Project tree]
 va1
@@ -27,9 +28,17 @@ va1
 		shema.jpg
 [Open project files]
 0=index.html
+1=va1.ino
+2=DHT.h
 [Selected Project Files]
 Main=
-Selected=index.html
+Selected=va1.ino
 [index.html]
 TopLine=46
-Caret=3,68
+Caret=1,1
+[va1.ino]
+TopLine=1
+Caret=30,8
+[DHT.h]
+TopLine=13
+Caret=1,1

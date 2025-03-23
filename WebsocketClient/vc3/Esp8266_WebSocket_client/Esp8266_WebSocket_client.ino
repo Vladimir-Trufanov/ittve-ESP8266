@@ -89,7 +89,9 @@ void setup() {
     DEBUG_SERIAL.print("Local IP: "); DEBUG_SERIAL.println(WiFi.localIP());
     // server address, port and URL
     //webSocket.begin("echo.websocket.org", 80, "/");
-    webSocket.beginSSL("echo.websocket.org", 80, "/");
+    //webSocket.beginSSL("127.0.0.1", 7777, "/");
+    //webSocket.begin("127.0.0.1", 7777, "/");
+    webSocket.begin("127.0.0.1", 7777);
  
     // event handler
     webSocket.onEvent(webSocketEvent);

@@ -118,4 +118,7 @@
 
 #### [va4 ESP32 WebSocket Server: Control Outputs (Arduino IDE)](https://randomnerdtutorials.com/esp32-websocket-server-arduino/)
 
+#### [va5 https://www.best-microcontroller-projects.com/esp32-websocket-server.html](https://www.best-microcontroller-projects.com/esp32-websocket-server.html)
+
+
 

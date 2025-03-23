@@ -24,21 +24,13 @@ va1
 		esp32-hiletgo-pin-configuration.jpg
 		ESP32-WebSocket-Server-Circuit.png
 		ForSocketSketch.fzz
-		index.html
+		..\..\WebsocketClient\vc3\JavaScript-WebSocket-client\index.html
 		shema.jpg
 [Open project files]
-0=index.html
-1=va1.ino
-2=DHT.h
+0=..\..\WebsocketClient\vc3\JavaScript-WebSocket-client\index.html
 [Selected Project Files]
 Main=
-Selected=va1.ino
-[index.html]
-TopLine=46
-Caret=1,1
-[va1.ino]
+Selected=..\..\WebsocketClient\vc3\JavaScript-WebSocket-client\index.html
+[..\..\WebsocketClient\vc3\JavaScript-WebSocket-client\index.html]
 TopLine=1
-Caret=30,8
-[DHT.h]
-TopLine=13
-Caret=1,1
+Caret=8,109

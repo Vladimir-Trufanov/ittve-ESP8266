@@ -1,0 +1,112 @@
+<!--
+js simple WebSocket client
+https://www.mischainti.org
+ 
+I use the ws://echo.websocket.org/ echo server
+When you send a message to this server you receive
+a response with the same message
+-->
+ 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>WebSocket Test</title>
+    <style>
+        #output 
+        {
+            border: solid 1px #999999;
+            border-top-color: #CCCCCC;
+            border-left-color: #CCCCCC;
+            padding: 5px;
+            width: 300px;
+            height: 172px;
+            overflow-y: scroll;
+ 
+            font-family: "Open Sans";
+            font-size: 13px;
+        }
+    </style>
+    <script language="javascript" type="text/javascript">
+ 
+        var wsUri = "wss://echo.websocket.org/";
+        var output;
+ 
+        function init() 
+        {
+            output = document.getElementById("output");
+            testWebSocket();
+        }
+ 
+        function testWebSocket() 
+        {
+            websocket = new WebSocket(wsUri);
+            websocket.onopen = function (evt) 
+            {
+                onOpen(evt)
+            };
+            websocket.onclose = function (evt) 
+            {
+                onClose(evt)
+            };
+            websocket.onmessage = function (evt) 
+            {
+                onMessage(evt)
+            };
+            websocket.onerror = function (evt) 
+            {
+                onError(evt)
+            };
+        }
+ 
+        function onOpen(evt) 
+        {
+            writeToScreen("CONNECTED");
+            // doSend("Hi, I'm simple JS client!!");
+        }
+ 
+        function onClose(evt) 
+        {
+            writeToScreen("DISCONNECTED");
+        }
+ 
+        function onMessage(evt) 
+        {
+            writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data + '</span>');
+            // websocket.close();
+        }
+ 
+        function onError(evt) 
+        {
+            writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+        }
+ 
+        function doSend(message) 
+        {
+            writeToScreen("SENT: " + message);
+            websocket.send(message);
+        }
+ 
+        function writeToScreen(message) 
+        {
+            var pre = document.createElement("p");
+            pre.style.wordWrap = "break-word";
+            pre.innerHTML = message;
+            output.appendChild(pre);
+ 
+            output.scrollTop = output.scrollHeight;
+        }
+ 
+        window.addEventListener("load", init, false);
+ 
+    </script>
+</head>
+<body>
+  <h2>WebSocket Test</h2>
+  
+  <div id="output"></div> <br/>
+  <div><input type="button" value="Send message!" onclick="doSend('Simple js client message!!')"/></div>
+  <div><input type="button" value="Close connection!" onclick="websocket.close()"/></div>
+ 
+</body>
+</html>

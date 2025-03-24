@@ -1,29 +1,26 @@
 /*
-    Go to thingspeak.com and create an account if you don't have one already.
-    After logging in, click on the "New Channel" button to create a new channel for your data. This is where your data will be stored and displayed.
-    Fill in the Name, Description, and other fields for your channel as desired, then click the "Save Channel" button.
-    Take note of the "Write API Key" located in the "API keys" tab, this is the key you will use to send data to your channel.
-    Replace the channelID from tab "Channel Settings" and privateKey with "Read API Keys" from "API Keys" tab.
-    Replace the host variable with the thingspeak server hostname "api.thingspeak.com"
-    Upload the sketch to your ESP32 board and make sure that the board is connected to the internet. The ESP32 should now send data to your Thingspeak channel at the intervals specified by the loop function.
-    Go to the channel view page on thingspeak and check the "Field1" for the new incoming data.
-    You can use the data visualization and analysis tools provided by Thingspeak to display and process your data in various ways.
-    Please note, that Thingspeak accepts only integer values.
-
     - Перейдите по ссылке thingspeak.com и создайте учетную запись, если у вас ее еще нет.
-
-    - После входа в систему нажмите на кнопку "Новый канал", чтобы создать новый канал для ваших данных. Именно здесь будут храниться и отображаться ваши данные.
-    Заполните название, описание и другие поля для вашего канала по желанию, затем нажмите кнопку "Сохранить канал".
-    Обратите внимание на "Написать ключ API", расположенный на вкладке "Ключи API", это ключ, который вы будете использовать для отправки данных на свой канал.
-    Замените идентификатор канала на вкладке "Настройки канала" и PrivateKey на "Чтение ключей API" на вкладке "Ключи API".
-    Замените переменную host на имя хоста сервера thingspeak "api.thingspeak.com"
-    Загрузите эскиз на свою плату ESP32 и убедитесь, что плата подключена к Интернету. Теперь ESP32 должен отправлять данные на ваш канал Thingspeak с интервалами, указанными функцией loop.
-    Перейдите на страницу просмотра канала на thingspeak и проверьте "Поле 1" на наличие новых входящих данных.
-    Вы можете использовать инструменты визуализации и анализа данных, предоставляемые Thingspeak, для отображения и обработки ваших данных различными способами.
+    - После входа в систему нажмите на кнопку "Новый канал", чтобы создать новый канал для 
+    ваших данных. Именно здесь будут храниться и отображаться ваши данные.
+    - Заполните название, описание и другие поля для вашего канала по желанию, затем нажмите 
+    кнопку "Сохранить канал".
+    - Обратите внимание на "Написать ключ API", расположенный на вкладке "Ключи API", 
+    это ключ, который вы будете использовать для отправки данных на свой канал.
+    - Замените идентификатор канала на вкладке "Настройки канала" и PrivateKey на 
+    "Чтение ключей API" на вкладке "Ключи API".
+    - Замените переменную host на имя хоста сервера thingspeak "api.thingspeak.com"
+    - Загрузите эскиз на свою плату ESP32 и убедитесь, что плата подключена к Интернету. 
+    Теперь ESP32 должен отправлять данные на ваш канал Thingspeak с интервалами, 
+    указанными функцией loop.
+    - Перейдите на страницу просмотра канала на thingspeak и проверьте "Field1" на 
+    наличие новых входящих данных.
+    Вы можете использовать инструменты визуализации и анализа данных, предоставляемые 
+    Thingspeak, для отображения и обработки ваших данных различными способами.
     Пожалуйста, обратите внимание, что Thingspeak принимает только целые значения.
 
     You can later check the values at https://thingspeak.com/channels/2005329
-    Please note that this public channel can be accessed by anyone and it is possible that more people will write their values.
+    Please note that this public channel can be accessed by anyone and it is 
+    possible that more people will write their values.
  */
 
 #include <WiFi.h>
@@ -44,37 +41,32 @@ const String channelID = "2890169";             // Change this to your channel I
 const String writeApiKey = "B1EA27SPA485JSQS";  // Change this to your Write API key
 const String readApiKey = "PV6U89DCSBUY71XO";   // Change this to your Read API key
 
-// The default example accepts one data filed named "field1"
-// For your own server you can ofcourse create more of them.
+// В примере по умолчанию используется одно поле данных с именем "field1"
+// Для вашего собственного сервера вы, конечно, можете создать больше таких полей.
 int field1 = 0;
 
-int numberOfResults = 3;  // Number of results to be read
-int fieldNumber = 1;      // Field number which will be read out
+int numberOfResults = 3;  // Количество результатов, которые нужно прочитать
+int fieldNumber = 1;      // Номер поля, который будет считан
 
-void setup() {
+void setup() 
+{
   Serial.begin(115200);
-  while (!Serial) {
-    delay(100);
-  }
+  while (!Serial) delay(100);
 
-  // We start by connecting to a WiFi network
-
+  // Начинаем с подключения к сети Wi-Fi
   Serial.println();
   Serial.println("******************************************************");
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
+  Serial.print("Подключаемся к "); Serial.println(ssid);
 
   WiFi.begin(ssid, password);
-
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED) 
+  {
     delay(500);
     Serial.print(".");
   }
 
   Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
+  Serial.print("WiFi подключена по IP адресу: "); Serial.println(WiFi.localIP());
 }
 
 void readResponse(NetworkClient *client) {
@@ -96,12 +88,15 @@ void readResponse(NetworkClient *client) {
   Serial.printf("\nClosing connection\n\n");
 }
 
-void loop() {
+void loop() 
+{
   NetworkClient client;
   String footer = String(" HTTP/1.1\r\n") + "Host: " + String(host) + "\r\n" + "Connection: close\r\n\r\n";
 
   // WRITE --------------------------------------------------------------------------------------------
-  if (!client.connect(host, httpPort)) {
+  if (!client.connect(host, httpPort)) 
+  {
+    Serial.println("Нет подключения к "+String(host)+": "+String(httpPort));
     return;
   }
 

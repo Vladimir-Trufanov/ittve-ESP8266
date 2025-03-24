@@ -4,6 +4,20 @@
 
 #### Поддерживаемые цели: | ESP32 | ESP32-S2 | ESP32-C3 | ESP32-S3 |
 
+### Структура класса
+
+```
+class WiFiClass : public WiFiGenericClass, public WiFiSTAClass, public WiFiScanClass, public WiFiAPClass
+
+Зависимости:
+
+WiFi => WiFiClient => NetWorkClient:
+   int NetworkClient::connect(const char *host, uint16_t port);
+   
+
+```
+
+
 ### How to Use Example
 
 Запустите этот пример и посмотрите на последовательный вывод. Вы также можете ознакомиться со значениями на [https://thingspeak.com/channels/2005329](https://thingspeak.com/channels/2005329)

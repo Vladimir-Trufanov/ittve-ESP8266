@@ -109,7 +109,7 @@ To get more information about the Espressif boards see [Espressif Development Ki
 
 * Select the COM port: `Devices` or set the `upload_port` option on the `platformio.ini` file.
 
-## Example Log Output
+### Example Log Output
 
 The initial output which is common for all examples can be ignored:
 ```
@@ -179,7 +179,7 @@ Closing connection
 After this the write+read log repeat every 10 seconds.
 
 
-## Troubleshooting
+### Troubleshooting
 
 ***Important: Make sure you are using a good quality USB cable and that you have a reliable power source***
 
@@ -190,7 +190,7 @@ After this the write+read log repeat every 10 seconds.
 
 If the error persists, you can ask for help at the official [ESP32 forum](https://esp32.com) or see [Contribute](#contribute).
 
-## Contribute
+### Contribute
 
 To know how to contribute to this project, see [How to contribute.](https://github.com/espressif/arduino-esp32/blob/master/CONTRIBUTING.rst)
 
@@ -198,7 +198,7 @@ If you have any **feedback** or **issue** to report on this example/library, ple
 
 Before creating a new issue, be sure to try the Troubleshooting and to check if the same issue was already created by someone else.
 
-## Resources
+### Resources
 
 * Official ESP32 Forum: [Link](https://esp32.com)
 * Arduino-ESP32 Official Repository: [espressif/arduino-esp32](https://github.com/espressif/arduino-esp32)
@@ -207,3 +207,8 @@ Before creating a new issue, be sure to try the Troubleshooting and to check if 
 * ESP32-C3 Datasheet: [Link to datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf)
 * ESP32-S3 Datasheet: [Link to datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf)
 * Official ESP-IDF documentation: [ESP-IDF](https://idf.espressif.com)
+
+### Библиография
+
+#### [ESP32 WiFi Tutorial & Library Examples (Arduino IDE)](https://deepbluembedded.com/esp32-wifi-library-examples-tutorial-arduino/)
+

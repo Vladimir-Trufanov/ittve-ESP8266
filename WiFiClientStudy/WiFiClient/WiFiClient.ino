@@ -44,6 +44,7 @@ const String readApiKey = "PV6U89DCSBUY71XO";   // Change this to your Read API 
 // В примере по умолчанию используется одно поле данных с именем "field1"
 // Для вашего собственного сервера вы, конечно, можете создать больше таких полей.
 int field1 = 0;
+int nLine=0;
 
 int numberOfResults = 3;  // Количество результатов, которые нужно прочитать
 int fieldNumber = 1;      // Номер поля, который будет считан
@@ -69,50 +70,100 @@ void setup()
   Serial.print("WiFi подключена по IP адресу: "); Serial.println(WiFi.localIP());
 }
 
-void readResponse(NetworkClient *client) {
+// Принять ответ от сервера
+void readResponse(NetworkClient *client) 
+{
   unsigned long timeout = millis();
-  while (client->available() == 0) {
-    if (millis() - timeout > 5000) {
+  while (client->available() == 0) 
+  {
+    if (millis() - timeout > 5000) 
+    {
       Serial.println(">>> Client Timeout !");
       client->stop();
       return;
     }
   }
-
   // Read all the lines of the reply from server and print them to Serial
-  while (client->available()) {
+  while (client->available()) 
+  {
     String line = client->readStringUntil('\r');
-    Serial.print(line);
+    viewSrv(line);
   }
+  Serial.printf("Closing connection\n");
+}
 
-  Serial.printf("\nClosing connection\n\n");
+// Показать отправленный заголовок на сервер
+void view(String str)
+{
+  Serial.print(String(nLine++)+"["+str+"ВКПС]");
+}
+// Показать принятый заголовок от сервера
+void viewSrv(String str)
+{
+  //myString.substring(from, to)
+  Serial.println(str);
+  Serial.println(str.substring(2));
+  //Serial.print(String(nLine++)+"["+str+"ВКПС]");
+  //Serial.print(String(nLine++)+"["+str+"ВКПС]");
 }
 
 void loop() 
 {
-  NetworkClient client;
-  String footer = String(" HTTP/1.1\r\n") + "Host: " + String(host) + "\r\n" + "Connection: close\r\n\r\n";
+  String toServer;
 
-  // WRITE --------------------------------------------------------------------------------------------
+  // Начинаем очередной цикл обмена
+  Serial.println("------------------------------------ Начинается цикл обмена: "+String(field1));
+
+  // Подключаемся к серверу
+  NetworkClient client;
   if (!client.connect(host, httpPort)) 
   {
     Serial.println("Нет подключения к "+String(host)+": "+String(httpPort));
     return;
   }
+  // WRITE --------------------------------------------------------------------------------------------
+  Serial.println("Запрос на передачу значения серверу: WRITE");
+  // String footer = String(" HTTP/1.1\r\n") + "Host: " + String(host) + "\r\n" + "Connection: close\r\n\r\n";
+  // toServer="GET /update?api_key=" + writeApiKey + "&field1=" + field1 + footer;
 
-  client.print("GET /update?api_key=" + writeApiKey + "&field1=" + field1 + footer);
+  toServer="GET /update?api_key=" + writeApiKey + "&field1=" + field1 + String(" HTTP/1.1\r\n");
+  client.print(toServer);
+  view(toServer);
+
+  toServer="Host: " + String(host) + "\r\n";
+  client.print(toServer);
+  view(toServer);
+  
+  toServer="Connection: close\r\n\r\n";
+  client.print(toServer);
+  view(toServer);
+
+  Serial.println("Ответ сервера");
   readResponse(&client);
 
   // READ --------------------------------------------------------------------------------------------
-
-  String readRequest = "GET /channels/" + channelID + "/fields/" + fieldNumber + ".json?results=" + numberOfResults + " HTTP/1.1\r\n" + "Host: " + host + "\r\n"
-                       + "Connection: close\r\n\r\n";
-
-  if (!client.connect(host, httpPort)) {
+  Serial.println("Запрос на прием ответа от сервера: READ");
+  if (!client.connect(host, httpPort)) 
+  {
+    Serial.println("Нет подключения к "+String(host)+": "+String(httpPort));
     return;
   }
+  //String readRequest = "GET /channels/" + channelID + "/fields/" + fieldNumber + ".json?results=" + numberOfResults + " HTTP/1.1\r\n" + "Host: " + host + "\r\n"
+  //                     + "Connection: close\r\n\r\n";
 
-  client.print(readRequest);
+  toServer="GET /channels/" + channelID + "/fields/" + fieldNumber + ".json?results=" + numberOfResults + " HTTP/1.1\r\n";
+  client.print(toServer);
+  view(toServer);
+
+  toServer="Host: " + String(host) + "\r\n";
+  client.print(toServer);
+  view(toServer);
+  
+  toServer="Connection: close\r\n\r\n";
+  client.print(toServer);
+  view(toServer);
+
+  Serial.println("Ответ сервера");
   readResponse(&client);
 
   // -------------------------------------------------------------------------------------------------

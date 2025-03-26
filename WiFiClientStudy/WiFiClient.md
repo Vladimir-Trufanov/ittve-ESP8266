@@ -13,6 +13,8 @@ class WiFiClass : public WiFiGenericClass, public WiFiSTAClass, public WiFiScanC
 
 WiFi => WiFiClient => NetWorkClient:
    int NetworkClient::connect(const char *host, uint16_t port);
+   int NetworkClient::available(); 
+
    
 
 ```
@@ -75,6 +77,113 @@ PV6U89DCSBUY71XO
 * Вы можете использовать инструменты визуализации и анализа данных, предоставляемые Thingspeak, для отображения и обработки ваших данных различными способами.
 
 * Пожалуйста, обратите внимание, что Thingspeak принимает только целочисленные значения.
+
+### [Протокол диалога программы со штатными настройками](https://developer.mozilla.org/ru/docs/Web/HTTP):
+
+#### Запрос на передачу значения серверу: WRITE
+
+```
+// Стартовая строка: метод = GET, URL, версия протокола = HTTP/1.1
+..1[GET /update?api_key=V6YOTILH9I7D51F9&field1=0 HTTP/1.1]ВК+ПС
+
+//  Доменное имя и порт хоста запрашиваемого ресурса (по умолчанию порт 80)
+..2[Host: api.thingspeak.com]ВК+ПС
+
+// Закрыть TCP-соединение сразу после получения ответа от сервера
+..3[Connection: close]ВК+ПС
+
+// Пустая строка
+..4[]ВК+ПС
+```
+
+#### Ответ сервера
+
+```
+// Стартовая строка ответа:  версия протокола = HTTP/1.1, код состояния = 200, пояснение = OK
+..5[HTTP/1.1 200 OK]ВК
+
+// Дата генерации отклика
+..6[Date: Wed, 26 Mar 2025 16:16:06 GMT]ВК
+
+// Формат и способ представления данных
+..7[Content-Type: text/plain; charset=utf-8]ВК
+
+// Размер содержимого в байтах 
+..8[Content-Length: 1]ВК
+
+..9[Connection: close]ВК
+.10[Status: 200 OK]ВК
+
+// Директива управления кэшированием: ответ устарел сразу, 
+// кэширование только для текущего пользователя,
+// всегда проверять актуальность данных перед  использованием
+.11[Cache-Control: max-age=0, private, must-revalidate]ВК
+
+// Доступ к ресурсу открыт из всех источников, поэтому использовать с осторожностью
+.12[Access-Control-Allow-Origin: *]ВК
+
+// Результат предзапроса может храниться в кэше 1800 секунд
+.13[Access-Control-Max-Age: 1800]ВК
+
+// Cлучайный токен, уникальный для каждого HTTP-запроса
+.14[X-Request-Id: 492c561e-3748-4d4e-a951-0d03c03fc63e]ВК
+
+// Заголовки, которые могут быть использованы в ответе от сервера, 
+// но которые не являются стандартными для HTTP
+.15[Access-Control-Allow-Headers: origin, content-type, X-Requested-With]ВК
+
+.16[Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS, DELETE, PATCH]ВК
+
+// Уникальный идентификатор версии ответа, используемый при кэшировании.
+.17[ETag: W/"5feceb66ffc86f38d952786c6d696c79"]ВК
+
+// Инструкция для браузера: SAMEORIGIN. Разрешает загрузку страниц сайта 
+// во фрейме только если фрейм и страница расположены на одном домене
+.18[X-Frame-Options: SAMEORIGIN]ВК
+.19[]ВК
+
+// Тело сообщения (в данном случае 1 байт со значением 0). 
+// Этот компонент включает в свой состав данные, связанные с запросом, 
+// или документ (например – HTML-страница), передаваемый в ответе.
+.20[0]ВК
+
+Closing connection
+```
+
+#### Запрос на прием ответа от сервера: READ
+
+```
+.21[GET /channels/2005329/fields/1.json?results=3 HTTP/1.1]ВК+ПС
+.22[Host: api.thingspeak.com]ВК+ПС
+.23[Connection: close]ВК+ПС
+.24[]ВК+ПС
+```
+
+#### Ответ сервера
+
+```
+.25[HTTP/1.1 200 OK]ВК
+.26[Date: Wed, 26 Mar 2025 16:16:08 GMT]ВК
+.27[Content-Type: application/json; charset=utf-8]ВК
+.28[Transfer-Encoding: chunked]ВК
+.29[Connection: close]ВК
+.30[Status: 200 OK]ВК
+.31[Cache-Control: max-age=7, private]ВК
+.32[Access-Control-Allow-Origin: *]ВК
+.33[Access-Control-Max-Age: 1800]ВК
+.34[X-Request-Id: bfc6e321-de60-481c-a3b2-b01a39a07f8d]ВК
+.35[Access-Control-Allow-Headers: origin, content-type, X-Requested-With]ВК
+.36[Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS, DELETE, PATCH]ВК
+.37[ETag: W/"b4bd2cf0de556e6105db1c1062f4cd60"]ВК
+.38[X-Frame-Options: SAMEORIGIN]ВК
+.39[]ВК
+.40[1f5]ВК
+.41[{"channel":{"id":2005329,"name":"WiFiCLient example","description":"Default setup for Arduino ESP32 WiFiClient example","latitude":"0.0","longitude":"0.0","field1":"data0","created_at":"2023-01-11T15:56:08Z","updated_at":"2023-01-13T08:13:58Z","last_entry_id":2040518},"feeds":[{"created_at":"2025-03-26T16:15:24Z","entry_id":2040516,"field1":"71365"},{"created_at":"2025-03-26T16:15:39Z","entry_id":2040517,"field1":"13330"},{"created_at":"2025-03-26T16:16:04Z","entry_id":2040518,"field1":"71368"}]}]ВК
+.42[0]ВК
+.43[]ВК
+.44[]ВК
+Closing connection
+```
 
 #### Config example:
 
@@ -175,7 +284,10 @@ X-Frame-Options: SAMEORIGIN
 
 
 Closing connection
+
 ```
+
+
 After this the write+read log repeat every 10 seconds.
 
 

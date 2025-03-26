@@ -32,14 +32,14 @@ const char *host = "api.thingspeak.com";        // This should not be changed
 const int httpPort = 80;                        // This should not be changed
 
 // 2025-03-24 первоначальные настройки 
-//const String channelID = "2005329";             // Change this to your channel ID
-//const String writeApiKey = "V6YOTILH9I7D51F9";  // Change this to your Write API key
-//const String readApiKey = "34W6LGLIFXD56MPM";   // Change this to your Read API key
+const String channelID = "2005329";             // Change this to your channel ID
+const String writeApiKey = "V6YOTILH9I7D51F9";  // Change this to your Write API key
+const String readApiKey = "34W6LGLIFXD56MPM";   // Change this to your Read API key
 
 // Канал: Probatve
-const String channelID = "2890169";             // Change this to your channel ID
-const String writeApiKey = "B1EA27SPA485JSQS";  // Change this to your Write API key
-const String readApiKey = "PV6U89DCSBUY71XO";   // Change this to your Read API key
+//const String channelID = "2890169";             // Change this to your channel ID
+//const String writeApiKey = "B1EA27SPA485JSQS";  // Change this to your Write API key
+//const String readApiKey = "PV6U89DCSBUY71XO";   // Change this to your Read API key
 
 // В примере по умолчанию используется одно поле данных с именем "field1"
 // Для вашего собственного сервера вы, конечно, можете создать больше таких полей.
@@ -139,13 +139,6 @@ void loop()
   Serial.println("Запрос на передачу значения серверу: WRITE");
   // String footer = String(" HTTP/1.1\r\n") + "Host: " + String(host) + "\r\n" + "Connection: close\r\n\r\n";
   // toServer="GET /update?api_key=" + writeApiKey + "&field1=" + field1 + footer;
-
-  /*
-  toServer("GET /update?api_key=" + writeApiKey + "&field1=" + field1 + String(" HTTP/1.1\r\n"),client);
-  toServer("Host: " + String(host) + "\r\n",client);
-  toServer("Connection: close\r\n",client);
-  toServer("\r\n",client);
-  */
   toServer("GET /update?api_key=" + writeApiKey + "&field1=" + field1 + String(" HTTP/1.1\r\n"));
   toServer("Host: " + String(host) + "\r\n");
   toServer("Connection: close\r\n");
@@ -161,15 +154,8 @@ void loop()
     Serial.println("Нет подключения к "+String(host)+": "+String(httpPort));
     return;
   }
-  //String readRequest = "GET /channels/" + channelID + "/fields/" + fieldNumber + ".json?results=" + numberOfResults + " HTTP/1.1\r\n" + "Host: " + host + "\r\n"
-  //                     + "Connection: close\r\n\r\n";
-
-  /*
-  toServer("GET /channels/" + channelID + "/fields/" + fieldNumber + ".json?results=" + numberOfResults + " HTTP/1.1\r\n",client);
-  toServer("Host: " + String(host) + "\r\n",client);
-  toServer("Connection: close\r\n",client);
-  toServer("\r\n",client);
-  */
+  //String readRequest = "GET /channels/" + channelID + "/fields/" + fieldNumber + 
+  //   ".json?results=" + numberOfResults + " HTTP/1.1\r\n" + "Host: " + host + "\r\n" + "Connection: close\r\n\r\n";
   toServer("GET /channels/" + channelID + "/fields/" + fieldNumber + ".json?results=" + numberOfResults + " HTTP/1.1\r\n");
   toServer("Host: " + String(host) + "\r\n");
   toServer("Connection: close\r\n");

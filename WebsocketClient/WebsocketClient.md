@@ -8,6 +8,8 @@
 
 #### [vc2 November 1, 2017 ESP32 Arduino: Websocket client](https://techtutorialsx.com/2017/11/01/esp32-arduino-websocket-client/)
 
+#### [Simple ESP32 WebSocket client example](vc2/Simple ESP32 WebSocket client example.md)
+
 #### [vc3 WebSocket on Arduino, esp8266 and esp32](https://mischianti.org/websocket-on-arduino-esp8266-and-esp32-client-1/)
 
 #### [vc4 ESP32 Arduino Tutorial: Websocket client](https://www.dfrobot.com/blog-776.html)

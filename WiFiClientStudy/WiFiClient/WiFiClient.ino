@@ -31,6 +31,13 @@ const char* password = "18009217";
 const char *host = "api.thingspeak.com";        // This should not be changed
 const int httpPort = 80;                        // This should not be changed
 
+//const char *host = "http://127.0.0.1";
+//const char *host = "127.0.0.1";
+//const char *host = "http://localhost";
+//const int httpPort = 7771;                       
+//const char *host = "https://probatv.ru";
+//const int httpPort = 80;                       
+
 // 2025-03-24 первоначальные настройки 
 const String channelID = "2005329";             // Change this to your channel ID
 const String writeApiKey = "V6YOTILH9I7D51F9";  // Change this to your Write API key

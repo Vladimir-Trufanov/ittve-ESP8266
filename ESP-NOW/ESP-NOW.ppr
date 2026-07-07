@@ -1,0 +1,47 @@
+[Config]
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.CompileOnBackground=0
+Compilator.ProgSaveAll=0
+Compilator.ProgRunSelection=0
+Compilator.LogType=0
+Compilator.LogEncoding=0
+DefaultDir=C:\ittve-ESP8266\ESP-NOW
+DefaultCP=0
+LogtoEnd=1
+DontOpen=0
+AbsolutePath=0
+FileFormat=0
+ProjectFilesOnly=0
+Extensions=*.*
+[Project tree]
+ESP-NOW
+	+ESP-NOW
+		-Blink8266
+			Blink8266\Blink8266.ino
+		-CheckFlashConfig
+			CheckFlashConfig\CheckFlashConfig.ino
+		-en_8266_out
+			en_8266_out\en_8266_out.ino
+		-Esp8266Info
+			Esp8266Info\Esp8266Info.ino
+		-get_mac_address
+			get_mac_address\get_mac_address.ino
+		-NTPClient
+			NTPClient\NTPClient.ino
+		+receiver_bare_minimum
+			receiver_bare_minimum\receiver_bare_minimum.ino
+		-transmitter_bare_minimum
+			transmitter_bare_minimum\transmitter_bare_minimum.ino
+		ESP-NOW.ppr
+		Espnow8266.md
+		Espnow8266.md.backup
+		Свой программатор.jpg
+[Open project files]
+0=receiver_bare_minimum\receiver_bare_minimum.ino
+[Selected Project Files]
+Main=
+Selected=receiver_bare_minimum\receiver_bare_minimum.ino
+[receiver_bare_minimum\receiver_bare_minimum.ino]
+TopLine=5
+Caret=38,17

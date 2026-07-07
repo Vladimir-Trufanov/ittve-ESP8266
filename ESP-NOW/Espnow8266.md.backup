@@ -17,7 +17,12 @@
 [9] Generic ESP8266 Module      MAC-Address: FC:F5:C4:88:91:ED
                 Formated: {0xFC, 0xF5, 0xC4, 0x88, 0x91, 0xED}
 
-          
+/*
+ AI Thinker ESP32-CAM [6] - MAC Address: F8:B3:B7:A7:E1:18
+ AI Thinker ESP32-CAM [8] - MAC Address: 94:54:C5:A8:21:9C
+ ESP32-2432S028 (CYD) [7] - MAC Address: B8:D6:1A:5C:F9:54
+*/
+                
 ```
  
  

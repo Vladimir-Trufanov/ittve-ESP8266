@@ -1,0 +1,41 @@
+упс
+"C:\\Users\\Евгеньевич\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\esp-x32\\2601/bin/xtensa-esp32-elf-g++" -MMD -c "@C:\\Users\\Евгеньевич\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\esp32-libs\\3.3.8/flags/cpp_flags" -w -Os -Werror=return-type -DF_CPU=240000000L -DARDUINO=10818 -DARDUINO_ESP32_2432S028R -DARDUINO_ARCH_ESP32 "-DARDUINO_BOARD=\"ESP32_2432S028R\"" "-DARDUINO_VARIANT=\"jczn_2432s028r\"" -DARDUINO_PARTITION_default "-DARDUINO_HOST_OS=\"windows\"" "-DARDUINO_FQBN=\"esp32:esp32:jczn_2432s028r:JTAGAdapter=default,PartitionScheme=default,CPUFreq=240,FlashMode=qio,FlashFreq=80,FlashSize=4M,UploadSpeed=921600,LoopCore=1,EventsCore=1,DebugLevel=none,EraseFlash=none,ZigbeeMode=default\"" -DESP32=ESP32 -DCORE_DEBUG_LEVEL=0 -DARDUINO_RUNNING_CORE=1 -DARDUINO_EVENT_RUNNING_CORE=1 -DARDUINO_USB_CDC_ON_BOOT=0 "@C:\\Users\\Евгеньевич\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\esp32-libs\\3.3.8/flags/defines" "-IC:\\ittve-ESP8266\\ESP-NOW\\receiver_CYD_minimum" -iprefix "C:\\Users\\Евгеньевич\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\esp32-libs\\3.3.8/include/" "@C:\\Users\\Евгеньевич\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\esp32-libs\\3.3.8/flags/includes" "-IC:\\Users\\Евгеньевич\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\esp32-libs\\3.3.8/qio_qspi/include" "-IC:\\Users\\Евгеньевич\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\3.3.8\\cores\\esp32" "-IC:\\Users\\Евгеньевич\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\3.3.8\\variants\\jczn_2432s028r" "-IC:\\Users\\Евгеньевич\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\3.3.8\\libraries\\WiFi\\src" "-IC:\\Users\\Евгеньевич\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\3.3.8\\libraries\\Network\\src" "-IC:\\Users\\Евгеньевич\\Documents\\Arduino\\libraries\\TFT_eSPI-master" "-IC:\\Users\\Евгеньевич\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\3.3.8\\libraries\\SPI\\src" "-IC:\\Users\\Евгеньевич\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\3.3.8\\libraries\\FS\\src" "-IC:\\Users\\Евгеньевич\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\3.3.8\\libraries\\SPIFFS\\src" "@C:\\Users\\615A~1\\AppData\\Local\\Temp\\arduino_build_575737/build_opt.h" "@C:\\Users\\615A~1\\AppData\\Local\\Temp\\arduino_build_575737/file_opts" "C:\\Users\\615A~1\\AppData\\Local\\Temp\\arduino_build_575737\\sketch\\receiver_CYD_minimum.ino.cpp" -o "C:\\Users\\615A~1\\AppData\\Local\\Temp\\arduino_build_575737\\sketch\\receiver_CYD_minimum.ino.cpp.o"
+In file included from C:\ittve-ESP8266\ESP-NOW\receiver_CYD_minimum\receiver_CYD_minimum.ino:12:
+spriteMain.h:22:45: error: expected ',' or '...' before 'line'
+   22 |   void sayLine(int16_t x, int16_t y, char[] line);
+      |                                             ^~~~
+C:\ittve-ESP8266\ESP-NOW\receiver_CYD_minimum\spriteMain.h: In member function 'void TSprite_Main::init()':
+spriteMain.h:70:5: error: 'stext3' was not declared in this scope
+   70 |     stext3.setColorDepth(8);
+      |     ^~~~~~
+C:\ittve-ESP8266\ESP-NOW\receiver_CYD_minimum\spriteMain.h: At global scope:
+spriteMain.h:84:59: error: expected ',' or '...' before 'line'
+   84 |   void TSprite_Main::sayLine(int16_t x, int16_t y, char[] line)
+      |                                                           ^~~~
+C:\ittve-ESP8266\ESP-NOW\receiver_CYD_minimum\spriteMain.h: In member function 'void TSprite_Main::sayLine(int16_t, int16_t, char*)':
+spriteMain.h:87:5: error: 'stext3' was not declared in this scope
+   87 |     stext3.setCursor(x,y);
+      |     ^~~~~~
+C:\ittve-ESP8266\ESP-NOW\receiver_CYD_minimum\spriteMain.h: In member function 'void TSprite_Main::say()':
+spriteMain.h:112:17: error: 'IntToChar' was not declared in this scope
+  112 |     strcat(line,IntToChar(i));
+      |                 ^~~~~~~~~
+spriteMain.h:135:5: error: 'stext3' was not declared in this scope
+  135 |     stext3.pushSprite(10,40);
+      |     ^~~~~~
+C:\ittve-ESP8266\ESP-NOW\receiver_CYD_minimum\spriteMain.h: In function 'char* IntToChar(uint16_t)':
+spriteMain.h:146:17: error: expected ')' before numeric constant
+  146 |     if (numby>65 534) numby=0;
+      |        ~        ^~~~
+      |                 )
+Несколько библиотек найдено для "WiFi.h"
+ Используется: C:\Users\Евгеньевич\AppData\Local\Arduino15\packages\esp32\hardware\esp32\3.3.8\libraries\WiFi
+Не используется: C:\Program Files (x86)\Arduino\libraries\WiFi
+Используем библиотеку WiFi версии 3.3.8 из папки: C:\Users\Евгеньевич\AppData\Local\Arduino15\packages\esp32\hardware\esp32\3.3.8\libraries\WiFi 
+Используем библиотеку Network версии 3.3.8 из папки: C:\Users\Евгеньевич\AppData\Local\Arduino15\packages\esp32\hardware\esp32\3.3.8\libraries\Network 
+Используем библиотеку TFT_eSPI-master версии 2.5.44 из папки: C:\Users\Евгеньевич\Documents\Arduino\libraries\TFT_eSPI-master 
+Используем библиотеку SPI версии 3.3.8 из папки: C:\Users\Евгеньевич\AppData\Local\Arduino15\packages\esp32\hardware\esp32\3.3.8\libraries\SPI 
+Используем библиотеку FS версии 3.3.8 из папки: C:\Users\Евгеньевич\AppData\Local\Arduino15\packages\esp32\hardware\esp32\3.3.8\libraries\FS 
+Используем библиотеку SPIFFS версии 3.3.8 из папки: C:\Users\Евгеньевич\AppData\Local\Arduino15\packages\esp32\hardware\esp32\3.3.8\libraries\SPIFFS 
+exit status 1
+expected ',' or '...' before 'line'

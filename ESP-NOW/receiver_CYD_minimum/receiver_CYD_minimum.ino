@@ -8,6 +8,9 @@
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite stext3 = TFT_eSprite(&tft); // Sprite object stext3
 
+#include "spriteMain.h"
+TSprite_Main ypsMain(4);
+
 uint16_t i=0;
 
 

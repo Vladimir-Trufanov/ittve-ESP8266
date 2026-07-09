@@ -13,6 +13,7 @@ DontOpen=0
 AbsolutePath=0
 FileFormat=0
 ProjectFilesOnly=0
+HTServer=localhost
 Extensions=*.*
 [Project tree]
 ESP-NOW
@@ -29,19 +30,36 @@ ESP-NOW
 			get_mac_address\get_mac_address.ino
 		-NTPClient
 			NTPClient\NTPClient.ino
-		+receiver_bare_minimum
+		-receiver_bare_minimum
 			receiver_bare_minimum\receiver_bare_minimum.ino
+		-receiver_basic32
+			receiver_basic32\receiver_basic32.ino
+		-receiver_CYD_minimum
+			-data
+				receiver_CYD_minimum\data\HuaweiSans16.vlw
+				receiver_CYD_minimum\data\HuaweiSans24.vlw
+				receiver_CYD_minimum\data\nasalization48.vlw
+			receiver_CYD_minimum\error.txt
+			receiver_CYD_minimum\inimem.h
+			receiver_CYD_minimum\receiver_CYD_minimum.ino
+			receiver_CYD_minimum\receiver_CYD_minimum.ppr
+			receiver_CYD_minimum\spriteMain.h
+		-transmitter_8266_minimum
+			transmitter_8266_minimum\transmitter_8266_minimum.ino
 		-transmitter_bare_minimum
 			transmitter_bare_minimum\transmitter_bare_minimum.ino
+		+transmitter_basic32
+			transmitter_basic8266.ino
+		ascii.pdf
 		ESP-NOW.ppr
 		Espnow8266.md
 		Espnow8266.md.backup
 		Свой программатор.jpg
 [Open project files]
-0=receiver_bare_minimum\receiver_bare_minimum.ino
+0=transmitter_basic8266.ino
 [Selected Project Files]
 Main=
-Selected=receiver_bare_minimum\receiver_bare_minimum.ino
-[receiver_bare_minimum\receiver_bare_minimum.ino]
-TopLine=5
-Caret=38,17
+Selected=transmitter_basic8266.ino
+[transmitter_basic8266.ino]
+TopLine=40
+Caret=1,78
